@@ -1,0 +1,23 @@
+{
+  "name": "khaleesi-web",
+  "version": "1.0.0",
+  "description": "khaleesi-web",
+  "main": "index.js",
+  "dependencies": {
+    "webpack-dev-server": "^2.9.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cooljoseph/khaleesi.git"
+  },
+  "author": "cooljoseph",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cooljoseph/khaleesi/issues"
+  },
+  "homepage": "https://github.com/cooljoseph/khaleesi#readme"
+}
