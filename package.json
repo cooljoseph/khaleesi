@@ -4,10 +4,22 @@
   "description": "khaleesi-web",
   "main": "index.js",
   "dependencies": {
-    "webpack-dev-server": "^2.9.7"
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.14.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "webpack-dev-server": "^2.9.7",
+    "webpack-merge": "^4.1.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "webpack": "^3.10.0"
+  },
   "scripts": {
+    "start": "webpack-dev-server --progress --inline",
+    "watch": "webpack -d --watch",
+    "dev": "webpack -d",
+    "prod": "webpack -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
