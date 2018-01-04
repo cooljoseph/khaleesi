@@ -8,7 +8,7 @@ const target = process.env.npm_lifecycle_event;
 
 const common = {
     entry: {
-        bundle: path.join(__dirname + '/src/main/resources/static/entry/entry.js')
+        bundle: path.join(__dirname + '/src/main/js/index.js')
     },
     output: {
         path: path.join(__dirname, '/src/main/resources/static'),
