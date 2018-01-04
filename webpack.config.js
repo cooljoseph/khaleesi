@@ -15,49 +15,31 @@ const common = {
         filename: '[name].js'
     },
     resolve: {
-        extensions: ['', '.js', '.css'],
+        extensions: ['.js'],
         alias: {
             'styles': __dirname + '/static/styles',
             'images': __dirname + '/static/images'
         }
     },
     module: {
-        /*preLoaders: [
-         {
-         test: /\.js$/,
-         loader: 'eslint',
-         exclude: /(node_modules|bower_components)/
-         }
-         ],*/
         loaders: [
             {
                 test: /\.js$/,
-                loader: 'babel',
+                loader: 'babel-loader',
                 exclude: /(node_modules|bower_components)/,
                 query: {
-                    presets: ['es2015']
+                    presets: ['env', 'react']
                 }
-            },
-            {
-                test: /\.(css|scss)$/,
-                loader: ExtractTextPlugin.extract({
-                    fallbackLoader: "style-loader",
-                    loader: "css-loader!postcss-loader!sass-loader"
-                })
-            },
-            {
-                test: /\.(gif|png|jpg)$/,
-                loader: 'file-loader?name=images/[name].[ext]&mimeType=image/[ext]&limit=100000'
             }
         ]
     },
     plugins: [
-        new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.NoErrorsPlugin(),
-        new CommonsChunkPlugin({
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
+        new webpack.optimize.CommonsChunkPlugin({
             name: "commons",
             filename: "common.js",
-            minChunks: Infinity,
+            minChunks: Infinity
         })
     ]
 }
