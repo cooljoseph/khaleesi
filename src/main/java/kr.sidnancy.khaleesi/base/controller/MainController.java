@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
+ * 일단 테스트 중
+ *
  * Created by joseph.yoon on 2017. 4. 26..
  */
 @Controller
@@ -45,6 +47,6 @@ public class MainController {
     @RequestMapping("/")
     public String main(ModelMap mm){
         mm.addAttribute("msg", "WELCOME");
-        return "welcome";
+        return "main";
     }
 }

@@ -1,13 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Header from './header.js';
+import Menu from './menu.js';
 
 class App extends React.Component {
     render(){
         return (
-            <h2>Hello World</h2>
+            <div className="wrapper">
+                <Header />
+                <div className="content-wrapper">
+                </div>
+                <Menu />
+            </div>
         );
     }
 }
 
-const rootElement = document.getElementById("wrap");
+const rootElement = document.getElementById("main");
 ReactDOM.render(<App/>, rootElement);
