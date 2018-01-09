@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import Header from './header.js';
-import Menu from './menu.js';
+import Header from './Header.js';
+import Menu from './Menu.js';
 
-class App extends React.Component {
+class App extends Component {
     render(){
         return (
             <div className="wrapper">
