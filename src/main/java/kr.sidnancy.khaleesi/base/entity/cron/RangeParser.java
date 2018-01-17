@@ -42,8 +42,8 @@ public class RangeParser extends AbstractParser{
                         }
                         Matcher charMatcher = CHAR_RANGE_PATTERN.matcher(str);
                         if(charMatcher.matches()){
-                            return isMatch(Integer.valueOf(getNumByStr(charMatcher.group(1).toUpperCase(), type)),
-                                    Integer.valueOf(getNumByStr(charMatcher.group(2).toUpperCase(), type)),
+                            return isMatch(Integer.valueOf(getNumByStr(charMatcher.group(1), type)),
+                                    Integer.valueOf(getNumByStr(charMatcher.group(2), type)),
                                     dateTime.get(type.field));
                         }
                         return false;

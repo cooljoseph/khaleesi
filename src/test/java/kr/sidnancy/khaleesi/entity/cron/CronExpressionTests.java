@@ -31,7 +31,7 @@ public class CronExpressionTests {
                         .isMatched(LocalDateTime.of(2018, 1, 16, 13, 29))
                 , is(true));
 
-        assertThat(CronExpression.newInstance("29", "13", "?", "16", "JAN")
+        assertThat(CronExpression.newInstance("29", "13", "?", "16", "jan")
                         .isMatched(LocalDateTime.of(2018, 1, 16, 13, 29))
                 , is(true));
     }

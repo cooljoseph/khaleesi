@@ -32,9 +32,9 @@ public abstract class AbstractParser {
 
     protected int getNumByStr(String input, DurationField type){
         if(type.equals(DurationField.DAY_OF_WEEK)){
-            return WEEK_ABBREVIATIONS.indexOf(input) + 1;
+            return WEEK_ABBREVIATIONS.indexOf(input.toUpperCase()) + 1;
         }else if(type.equals(DurationField.MONTH)){
-            return MONTH_ABBREVIATIONS.indexOf(input) + 1;
+            return MONTH_ABBREVIATIONS.indexOf(input.toUpperCase()) + 1;
         }else {
             return -1;
         }
