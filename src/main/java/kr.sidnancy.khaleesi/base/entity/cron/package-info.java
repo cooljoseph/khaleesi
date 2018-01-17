@@ -24,8 +24,8 @@
  * <ol>
  *     <li>분: 0,59 사이의 수</li>
  *     <li>시: 0,23 사이의 수</li>
- *     <li>요일: 1, 7 사이의 수(1은 월요일) 혹은 MON, TUE, WED, THU, FRI, SAT 와 같은 문자열 혹은 ?(설정하지 않음)</li>
- *     <li>일: 1, 31 사이의 수 혹은 ?(설정하지 않음)</li>
+ *     <li>요일: 1, 7 사이의 수(1은 월요일) 혹은 MON, TUE, WED, THU, FRI, SAT, SUN 와 같은 문자열 혹은 ?(설정하지 않음)</li>
+ *     <li>일: 1, 31 사이의 수 혹은 ?(설정하지 않음) </li>
  *     <li>월: 1, 12 사이의 수, 혹은 JAN, FEB, MAR, APR, MAY, JUN. JUL, AUG, SEP, OCT, NOV, DEC 와 같은 문자열</li>
  * </ol>
  *

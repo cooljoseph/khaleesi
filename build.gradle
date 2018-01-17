@@ -37,6 +37,9 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-devtools'
 
     compile 'com.google.guava:guava:23.6-jre'
+    compile 'org.apache.commons:commons-lang3:3.7'
+
+    compile 'org.projectlombok:lombok:1.16.20'
 
     testCompile 'junit:junit'
     testCompile 'org.springframework.boot:spring-boot-starter-test'
