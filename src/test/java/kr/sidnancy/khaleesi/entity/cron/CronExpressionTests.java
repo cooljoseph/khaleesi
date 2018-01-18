@@ -49,6 +49,24 @@ public class CronExpressionTests {
         assertThat(CronExpression.newInstance("30", "16", "MON-FRI", "?", "*")
                         .isMatched(LocalDateTime.of(2018, 1, 20, 16, 30))
                 , is(false));
+    }
 
+    @Test
+    public void stepTest() throws ParseException{
+        assertThat(CronExpression.newInstance("0/5", "*", "?", "*", "*")
+                        .isMatched(LocalDateTime.of(2018, 1, 16, 16, 30))
+                , is(true));
+
+        assertThat(CronExpression.newInstance("0/5", "*", "?", "*", "*")
+                        .isMatched(LocalDateTime.of(2018, 1, 16, 16, 31))
+                , is(false));
+
+        assertThat(CronExpression.newInstance("0", "*/2", "?", "*", "*")
+                        .isMatched(LocalDateTime.of(2018, 1, 16, 16, 0))
+                , is(true));
+
+        assertThat(CronExpression.newInstance("0", "*/2", "?", "*", "*")
+                        .isMatched(LocalDateTime.of(2018, 1, 16, 15, 0))
+                , is(false));
     }
 }

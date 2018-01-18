@@ -19,11 +19,13 @@ public abstract class AbstractParser {
 
     protected DurationField type;
     protected String cronFieldExp;
+    protected Range<Integer> range;
 
     private static final List<String> WEEK_ABBREVIATIONS = Arrays.asList("MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN");
     private static final List<String> MONTH_ABBREVIATIONS = Arrays.asList("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC");
 
-    public AbstractParser(DurationField type, String cronFieldExp) {
+    public AbstractParser(Range<Integer> range, DurationField type, String cronFieldExp) {
+        this.range = range;
         this.type = type;
         this.cronFieldExp = cronFieldExp;
     }

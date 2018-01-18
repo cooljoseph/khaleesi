@@ -11,15 +11,11 @@ import com.google.common.collect.Range;
 
 import java.text.ParseException;
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoField;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class AsteriskParser extends AbstractParser{
 
-    public AsteriskParser(DurationField type, String cronFieldExp) {
-        super(type, cronFieldExp);
+    public AsteriskParser(Range<Integer> range, DurationField type, String cronFieldExp) {
+        super(range, type, cronFieldExp);
     }
 
     @Override

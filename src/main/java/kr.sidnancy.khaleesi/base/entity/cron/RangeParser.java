@@ -7,6 +7,8 @@
 
 package kr.sidnancy.khaleesi.base.entity.cron;
 
+import com.google.common.collect.Range;
+
 import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -24,8 +26,8 @@ public class RangeParser extends AbstractParser{
     private static final Pattern NUMERIC_RANGE_PATTERN = Pattern.compile("(\\d+)-(\\d+)");
     private static final Pattern CHAR_RANGE_PATTERN = Pattern.compile("([a-zA-Z]+)-([a-zA-Z]+)");;
 
-    public RangeParser(DurationField type, String cronFieldExp) {
-        super(type, cronFieldExp);
+    public RangeParser(Range<Integer> range, DurationField type, String cronFieldExp) {
+        super(range, type, cronFieldExp);
     }
 
     @Override

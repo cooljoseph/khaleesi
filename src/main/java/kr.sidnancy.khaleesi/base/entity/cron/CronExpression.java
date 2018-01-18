@@ -10,6 +10,7 @@ package kr.sidnancy.khaleesi.base.entity.cron;
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Range;
 import org.apache.commons.lang3.StringUtils;
 
 import java.text.ParseException;
@@ -17,11 +18,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class CronExpression {
-//    private static final Range<Integer> MINUTE_RANGE = Range.closed(0, 59);
-//    private static final Range<Integer> HOUR_RANGE = Range.closed(0, 23);
-//    private static final Range<Integer> DAY_OF_WEEK_RANGE = Range.closed(1, 7);
-//    private static final Range<Integer> DAY_OF_MONTH_RANGE = Range.closed(1, 31);
-//    private static final Range<Integer> MONTH_RANGE = Range.closed(1, 12);
+
+    private static final Range<Integer> MINUTE_RANGE = Range.closed(0, 59);
+    private static final Range<Integer> HOUR_RANGE = Range.closed(0, 23);
+    private static final Range<Integer> DAY_OF_WEEK_RANGE = Range.closed(1, 7);
+    private static final Range<Integer> DAY_OF_MONTH_RANGE = Range.closed(1, 31);
+    private static final Range<Integer> MONTH_RANGE = Range.closed(1, 12);
 
     private String minuteExp;
     private String hourExp;
@@ -46,29 +48,31 @@ public class CronExpression {
         this.monthExp = month;
 
         // 분 단위 Parser 추가
-        this.minuteParsers.add(new AsteriskParser(AbstractParser.DurationField.MINUTE, minuteExp));
-        this.minuteParsers.add(new SingleParser(AbstractParser.DurationField.MINUTE, minuteExp));
-        this.minuteParsers.add(new RangeParser(AbstractParser.DurationField.MINUTE, minuteExp));
+        this.minuteParsers.add(new AsteriskParser(MINUTE_RANGE, AbstractParser.DurationField.MINUTE, minuteExp));
+        this.minuteParsers.add(new SingleParser(MINUTE_RANGE, AbstractParser.DurationField.MINUTE, minuteExp));
+        this.minuteParsers.add(new RangeParser(MINUTE_RANGE, AbstractParser.DurationField.MINUTE, minuteExp));
+        this.minuteParsers.add(new StepParser(MINUTE_RANGE, AbstractParser.DurationField.MINUTE, minuteExp));
 
         // 시 단위 Parser 추가
-        this.hourParsers.add(new AsteriskParser(AbstractParser.DurationField.HOUR, hourExp));
-        this.hourParsers.add(new SingleParser(AbstractParser.DurationField.HOUR, hourExp));
-        this.hourParsers.add(new RangeParser(AbstractParser.DurationField.HOUR, hourExp));
+        this.hourParsers.add(new AsteriskParser(HOUR_RANGE, AbstractParser.DurationField.HOUR, hourExp));
+        this.hourParsers.add(new SingleParser(HOUR_RANGE, AbstractParser.DurationField.HOUR, hourExp));
+        this.hourParsers.add(new RangeParser(HOUR_RANGE, AbstractParser.DurationField.HOUR, hourExp));
+        this.hourParsers.add(new StepParser(HOUR_RANGE, AbstractParser.DurationField.HOUR, hourExp));
 
         // 요일 단위 Parser 추가
-        this.dayOfWeekParsers.add(new AsteriskParser(AbstractParser.DurationField.DAY_OF_WEEK, dayOfWeekExp));
-        this.dayOfWeekParsers.add(new SingleParser(AbstractParser.DurationField.DAY_OF_WEEK, dayOfWeekExp));
-        this.dayOfWeekParsers.add(new RangeParser(AbstractParser.DurationField.DAY_OF_WEEK, dayOfWeekExp));
+        this.dayOfWeekParsers.add(new AsteriskParser(DAY_OF_WEEK_RANGE, AbstractParser.DurationField.DAY_OF_WEEK, dayOfWeekExp));
+        this.dayOfWeekParsers.add(new SingleParser(DAY_OF_WEEK_RANGE, AbstractParser.DurationField.DAY_OF_WEEK, dayOfWeekExp));
+        this.dayOfWeekParsers.add(new RangeParser(DAY_OF_WEEK_RANGE, AbstractParser.DurationField.DAY_OF_WEEK, dayOfWeekExp));
 
         // 일 단위 Parser 추가
-        this.dayOfMonthParsers.add(new AsteriskParser(AbstractParser.DurationField.DAY_OF_MONTH, dayOfMonthExp));
-        this.dayOfMonthParsers.add(new SingleParser(AbstractParser.DurationField.DAY_OF_MONTH, dayOfMonthExp));
-        this.dayOfMonthParsers.add(new RangeParser(AbstractParser.DurationField.DAY_OF_MONTH, dayOfMonthExp));
+        this.dayOfMonthParsers.add(new AsteriskParser(DAY_OF_MONTH_RANGE, AbstractParser.DurationField.DAY_OF_MONTH, dayOfMonthExp));
+        this.dayOfMonthParsers.add(new SingleParser(DAY_OF_MONTH_RANGE, AbstractParser.DurationField.DAY_OF_MONTH, dayOfMonthExp));
+        this.dayOfMonthParsers.add(new RangeParser(DAY_OF_MONTH_RANGE, AbstractParser.DurationField.DAY_OF_MONTH, dayOfMonthExp));
 
         // 월 단위 Parser 추가
-        this.monthParsers.add(new AsteriskParser(AbstractParser.DurationField.MONTH, monthExp));
-        this.monthParsers.add(new SingleParser(AbstractParser.DurationField.MONTH, monthExp));
-        this.monthParsers.add(new RangeParser(AbstractParser.DurationField.MONTH, monthExp));
+        this.monthParsers.add(new AsteriskParser(MONTH_RANGE, AbstractParser.DurationField.MONTH, monthExp));
+        this.monthParsers.add(new SingleParser(MONTH_RANGE, AbstractParser.DurationField.MONTH, monthExp));
+        this.monthParsers.add(new RangeParser(MONTH_RANGE, AbstractParser.DurationField.MONTH, monthExp));
     }
 
     public static CronExpression newInstance(String minute, String hour, String dayOfWeek, String dayOfMonth, String month){

@@ -22,8 +22,8 @@ import java.util.Set;
  * 단일 값이 주어졌을 때 체크한다.
  */
 public class SingleParser extends AbstractParser{
-    public SingleParser(DurationField type, String cronFieldExp) {
-        super(type, cronFieldExp);
+    public SingleParser(Range<Integer> range, DurationField type, String cronFieldExp) {
+        super(range, type, cronFieldExp);
     }
 
     @Override
