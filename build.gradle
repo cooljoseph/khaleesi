@@ -63,7 +63,7 @@ dependencies {
 
 buildDir = 'target'
 
-task initSrc << {
+task initSrc {
     project.sourceSets*.allSource.srcDirTrees.flatten().dir.each {
         dir -> dir.mkdirs()
     }
