@@ -28,11 +28,12 @@ public class Schedule implements Serializable{
     private String code;
     private String title;
 
-    private String monthly; // 월 단위
-    private String daily; // 일 단위
-    private String weekly; // 요일 단위
-    private String hourly; // 시간 단위
-    private String minutely; // 분 단위
+    private String month; // 월 단위
+    private String dayOfMonth; // 일 단위
+    private String dayOfWeek; // 요일 단위
+    private String hour; // 시간 단위
+    private String minute; // 분 단위
+    private String second; // 초 단위
 
     @CreatedDate
     @Column(name = "created_at", updatable = false)

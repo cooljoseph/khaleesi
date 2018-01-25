@@ -44,20 +44,21 @@ public abstract class AbstractParser {
 
     public enum DurationField {
 
-        MINUTE(ChronoField.MINUTE_OF_HOUR, "minute", Range.closed(0, 59)),
-        HOUR(ChronoField.HOUR_OF_DAY, "hour", Range.closed(0, 23)),
-        DAY_OF_WEEK(ChronoField.DAY_OF_WEEK, "day-of-week", Range.closed(1, 7)),
-        DAY_OF_MONTH(ChronoField.DAY_OF_MONTH, "day-of-month", Range.closed(1, 31)),
-        MONTH(ChronoField.MONTH_OF_YEAR, "month", Range.closed(1, 12));
+        SECOND(ChronoField.SECOND_OF_MINUTE, "second"),
+        MINUTE(ChronoField.MINUTE_OF_HOUR, "minute"),
+        HOUR(ChronoField.HOUR_OF_DAY, "hour"),
+        DAY_OF_WEEK(ChronoField.DAY_OF_WEEK, "day-of-week"),
+        DAY_OF_MONTH(ChronoField.DAY_OF_MONTH, "day-of-month"),
+        MONTH(ChronoField.MONTH_OF_YEAR, "month");
 
         final ChronoField field;
         final String name;
-        final Range<Integer> range;
+//        final Range<Integer> range;
 
-        DurationField(ChronoField field, String name, Range<Integer> range) {
+        DurationField(ChronoField field, String name) {
             this.field = field;
             this.name = name;
-            this.range = range;
+//            this.range = range;
         }
     }
 }

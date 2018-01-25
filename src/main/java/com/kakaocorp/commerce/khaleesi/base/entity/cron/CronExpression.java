@@ -18,18 +18,21 @@ import java.util.List;
 
 public class CronExpression {
 
+    private static final Range<Integer> SECOND_RANGE = Range.closed(0, 59);
     private static final Range<Integer> MINUTE_RANGE = Range.closed(0, 59);
     private static final Range<Integer> HOUR_RANGE = Range.closed(0, 23);
     private static final Range<Integer> DAY_OF_WEEK_RANGE = Range.closed(1, 7);
     private static final Range<Integer> DAY_OF_MONTH_RANGE = Range.closed(1, 31);
     private static final Range<Integer> MONTH_RANGE = Range.closed(1, 12);
 
+    private String secondExp;
     private String minuteExp;
     private String hourExp;
     private String dayOfWeekExp;
     private String dayOfMonthExp;
     private String monthExp;
 
+    private List<AbstractParser> secondParsers = Lists.newArrayList();
     private List<AbstractParser> minuteParsers = Lists.newArrayList();
     private List<AbstractParser> hourParsers = Lists.newArrayList();
     private List<AbstractParser> dayOfWeekParsers = Lists.newArrayList();
@@ -39,12 +42,19 @@ public class CronExpression {
     // 외부에서 생성자 호출 금지
     private CronExpression(){}
 
-    private CronExpression(String minute, String hour, String dayOfWeek, String dayOfMonth, String month){
+    private CronExpression(String second, String minute, String hour, String dayOfWeek, String dayOfMonth, String month){
+        this.secondExp = second;
         this.minuteExp = minute;
         this.hourExp = hour;
         this.dayOfWeekExp = dayOfWeek;
         this.dayOfMonthExp = dayOfMonth;
         this.monthExp = month;
+
+        // 초 단위 Parser 추가
+        this.secondParsers.add(new AsteriskParser(SECOND_RANGE, AbstractParser.DurationField.SECOND, secondExp));
+        this.secondParsers.add(new SingleParser(SECOND_RANGE, AbstractParser.DurationField.SECOND, secondExp));
+        this.secondParsers.add(new RangeParser(SECOND_RANGE, AbstractParser.DurationField.SECOND, secondExp));
+        this.secondParsers.add(new StepParser(SECOND_RANGE, AbstractParser.DurationField.SECOND, secondExp));
 
         // 분 단위 Parser 추가
         this.minuteParsers.add(new AsteriskParser(MINUTE_RANGE, AbstractParser.DurationField.MINUTE, minuteExp));
@@ -74,8 +84,8 @@ public class CronExpression {
         this.monthParsers.add(new RangeParser(MONTH_RANGE, AbstractParser.DurationField.MONTH, monthExp));
     }
 
-    public static CronExpression newInstance(String minute, String hour, String dayOfWeek, String dayOfMonth, String month){
-        return new CronExpression(minute, hour, dayOfWeek, dayOfMonth, month);
+    public static CronExpression newInstance(String second, String minute, String hour, String dayOfWeek, String dayOfMonth, String month){
+        return new CronExpression(second, minute, hour, dayOfWeek, dayOfMonth, month);
     }
 
     public boolean isMatched() throws ParseException {
