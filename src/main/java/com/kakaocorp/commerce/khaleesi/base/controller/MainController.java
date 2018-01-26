@@ -10,10 +10,16 @@ package com.kakaocorp.commerce.khaleesi.base.controller;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.kakaocorp.commerce.khaleesi.base.entity.User;
 import com.kakaocorp.commerce.khaleesi.base.entity.Views;
+import com.kakaocorp.commerce.khaleesi.base.service.DummyService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.async.DeferredResult;
+
+import java.util.concurrent.CompletableFuture;
 
 /**
  * 일단 테스트 중
@@ -22,6 +28,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 public class MainController {
+
+    @Autowired
+    private DummyService dummyService;
 
     @RequestMapping("/greetings")
     @ResponseBody
@@ -55,5 +64,13 @@ public class MainController {
     public String main(ModelMap mm){
         mm.addAttribute("msg", "WELCOME");
         return "main";
+    }
+
+    @RequestMapping("/dummy")
+    @ResponseBody
+    public DeferredResult<ResponseEntity<String>> dummy(){
+        DeferredResult<ResponseEntity<String>> deferredResult = new DeferredResult<>();
+        dummyService.dummy().whenCompleteAsync((result, throwable) -> deferredResult.setResult(ResponseEntity.ok(result)));
+        return deferredResult;
     }
 }

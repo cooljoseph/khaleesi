@@ -24,16 +24,25 @@ import java.time.LocalDateTime;
 public class Schedule implements Serializable{
 
     @Id
+    @Column(name = "id")
     private Integer id;
+    @Column(name = "code")
     private String code;
+    @Column(name = "title")
     private String title;
 
+    @Column(name="month")
     private String month; // 월 단위
+    @Column(name="day_of_month")
     private String dayOfMonth; // 일 단위
+    @Column(name="day_of_week")
     private String dayOfWeek; // 요일 단위
+    @Column(name="hour")
     private String hour; // 시간 단위
+    @Column(name="minute")
     private String minute; // 분 단위
-    private String second; // 초 단위
+    @Column(name="second")
+    private String second;   // 초 단위
 
     @CreatedDate
     @Column(name = "created_at", updatable = false)
