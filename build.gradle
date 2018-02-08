@@ -22,11 +22,21 @@ apply plugin: 'com.moowork.node'
 
 ext{
     javaVersion = '1.8'
+    queryDslVersion = '4.1.4'
+    queryDslOutput = file("src-gen/main/java")
 }
 
 repositories {
     mavenCentral()
     maven { url "http://repo.spring.io/snapshot/" }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir "src-gen/main/java"
+        }
+    }
 }
 
 dependencies {
@@ -42,6 +52,10 @@ dependencies {
     compile 'com.google.guava:guava:23.6-jre'
     compile 'org.apache.commons:commons-lang3:3.7'
     compile 'org.projectlombok:lombok:1.16.20'
+
+    compile "com.querydsl:querydsl-core:${queryDslVersion}"
+    compile "com.querydsl:querydsl-apt:${queryDslVersion}"
+    compile "com.querydsl:querydsl-jpa:${queryDslVersion}"
 
     compile 'mysql:mysql-connector-java:5.1.45'
     compile 'com.zaxxer:HikariCP:2.7.6'
@@ -63,14 +77,44 @@ dependencies {
 
 buildDir = 'target'
 
-task initSrc {
-    project.sourceSets*.allSource.srcDirTrees.flatten().dir.each {
-        dir -> dir.mkdirs()
-    }
-}
+//task initSrc {
+//    project.sourceSets*.allSource.srcDirTrees.flatten().dir.each {
+//        dir -> dir.mkdirs()
+//    }
+//}
 
 sourceCompatibility = javaVersion
 targetCompatibility = javaVersion
+
+task generateQueryDSL(type: JavaCompile, group: 'build') {
+    doFirst {
+        if (!queryDslOutput.exists()) {
+            logger.info("Creating `$queryDslOutput` directory")
+
+            if (!queryDslOutput.mkdirs()) {
+                throw new InvalidUserDataException("Unable to create `$queryDslOutput` directory")
+            }
+        }
+    }
+
+    source = sourceSets.main.java
+    classpath = configurations.compile
+    options.compilerArgs = [
+            "-proc:only",
+            "-processor",
+            "com.querydsl.apt.jpa.JPAAnnotationProcessor"
+    ]
+    destinationDir = queryDslOutput
+}
+
+compileTestJava.dependsOn(generateQueryDSL)
+
+/**
+ * gradle clean task 실행 시 querydsl 경로 제거
+ */
+clean {
+    delete queryDslOutput
+}
 
 // 소스/jar 인코딩
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'

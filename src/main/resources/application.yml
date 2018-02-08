@@ -21,3 +21,5 @@ spring:
 
   flyway:
     locations: classpath:db/migration/{vendor}
+    # test 용도 나중에는 지워야 함
+    clean-on-validation-error: true

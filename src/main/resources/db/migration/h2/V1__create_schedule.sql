@@ -1,5 +1,7 @@
+create sequence if not exists HIBERNATE_SEQUENCE;
+
 create table schedule(
-  id int not null AUTO_INCREMENT,
+  id int not null,
   code varchar(100) not null,
   group_code varchar(255) not null,
   title varchar(500) not null,
@@ -36,7 +38,7 @@ create table schedule(
 )engine=InnoDB default charset=utf8;
 
 create table worker(
-  id int not null AUTO_INCREMENT,
+  id int not null,
   description varchar(1000),
   host varchar(255) not null,
   ip varchar(100) not null,
@@ -52,7 +54,7 @@ create table worker(
 )engine=InnoDB default charset=utf8;
 
 create table schedule_work(
-  id int not null AUTO_INCREMENT,
+  id int not null,
   description varchar(1000),
   end_dttm varchar(14),
   error_msg varchar(1000),
@@ -70,7 +72,7 @@ CREATE INDEX schedule_work_ix_start_dttm ON schedule_work (start_dttm);
 CREATE INDEX schedule_work_ix_status on schedule_work(status);
 
 create table schedule_stored_data(
-  id int AUTO_INCREMENT,
+  id int,
 
   data varchar(4000) not null,
   level varchar(3) not null,

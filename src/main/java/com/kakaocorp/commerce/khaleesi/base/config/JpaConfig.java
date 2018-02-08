@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
-        basePackages = {"com.kakaocorp.commerce.khaleesi.base.entity"},
+        basePackages = {"com.kakaocorp.commerce.khaleesi.base.repository"},
         basePackageClasses = {Jsr310JpaConverters.class}
 )
 public class JpaConfig {
