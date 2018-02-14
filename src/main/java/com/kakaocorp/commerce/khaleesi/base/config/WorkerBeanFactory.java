@@ -27,22 +27,20 @@ import java.util.Map;
 @Slf4j
 public class WorkerBeanFactory implements ApplicationContextAware, InitializingBean {
     private ApplicationContext applicationContext;
-    @Value("${server.mode}")
+    @Value("${server.mode:all}")
     private String serverMode;
 
     private Map<String, WorkerProcess> workerProcessMap = Maps.newHashMap();
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        if(StringUtils.isNotEmpty(serverMode)){
-            if(false == (serverMode.equalsIgnoreCase(ServerMode.all.name()))
+        if(false == (serverMode.equalsIgnoreCase(ServerMode.all.name())
                     || serverMode.equalsIgnoreCase(ServerMode.master.name())
-                    || serverMode.equalsIgnoreCase(ServerMode.worker.name())){
-               throw new IllegalArgumentException("server.mode only accept \"master\", \"worker\", \"all\"");
-            }
-        }else{
-            serverMode = ServerMode.all.name();
+                    || serverMode.equalsIgnoreCase(ServerMode.worker.name()))){
+            throw new IllegalArgumentException("server.mode only accept \"master\", \"worker\", \"all\"");
         }
+
+        log.info("server mode [{}] is starting", serverMode);
 
         final Map<String, Object> workerCandidates = applicationContext.getBeansWithAnnotation(WorkerBean.class);
 
