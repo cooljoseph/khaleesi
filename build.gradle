@@ -107,6 +107,7 @@ task generateQueryDSL(type: JavaCompile, group: 'build') {
     destinationDir = queryDslOutput
 }
 
+compileJava.dependsOn(generateQueryDSL)
 compileTestJava.dependsOn(generateQueryDSL)
 
 /**
