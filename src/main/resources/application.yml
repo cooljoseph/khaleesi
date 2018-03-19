@@ -9,6 +9,7 @@ spring:
     hibernate:
       ddl-auto: none
 
+  # 어차피 재사용 될 거니깐 무의미
   datasource:
     url: jdbc:mysql://localhost:3306/khaleesi?useSSL=false
     username: root
