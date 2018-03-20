@@ -8,8 +8,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Button} from 'reactstrap';
+import 'mdbootstrap/css/mdb.min.css'
+import App from './app';
 
 const ROOT = document.querySelector('#main');
 
-ReactDOM.render(<Button color="danger">Hello</Button>, ROOT);
+ReactDOM.render(<App/>, ROOT);
