@@ -89,5 +89,7 @@ crashlytics-build.properties
 
 # Created by .ignore support plugin (hsz.mobi)
 
-bundle.js
-common.js
+src/main/resources/static/bundle.js
+src/main/resources/static/common.js
+src/main/resources/static/index.js
+src/main/resources/static/index.js.map
