@@ -22,12 +22,16 @@
     "mdbootstrap": "^4.5.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "reactstrap": "^5.0.0-beta.3"
   },
   "devDependencies": {
     "@types/jquery": "^3.3.1",
     "@types/react": "^16.0.40",
     "@types/react-dom": "^16.0.4",
+    "@types/react-router": "^4.0.23",
+    "@types/react-router-dom": "^4.2.5",
     "@types/reactstrap": "^5.0.20",
     "css-loader": "^0.28.11",
     "file-loader": "^1.1.11",

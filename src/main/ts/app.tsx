@@ -6,28 +6,28 @@
  */
 
 import * as React from 'react';
-import * as rs from 'reactstrap';
+import {Navbar, NavbarBrand, NavbarToggler, Nav, NavItem, NavLink} from 'reactstrap';
 
-export default class App extends React.Component<{}>{
+export class App extends React.Component<{}>{
   render(){
     return (
       <div className="container-fluid">
         <header>
-          <rs.Navbar fixed={"top"} dark={true} expand={"lg"} toggleable={true} className="pink" >
-            <rs.NavbarBrand href="#"><strong>Khaleesi</strong></rs.NavbarBrand>
-            <rs.NavbarToggler data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <Navbar fixed={"top"} dark={true} expand={"lg"} toggleable={true} className="pink" >
+            <NavbarBrand href="#"><strong>Khaleesi</strong></NavbarBrand>
+            <NavbarToggler data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
-            </rs.NavbarToggler>
+            </NavbarToggler>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <rs.Nav className="mr-auto" navbar={true}>
-                <rs.NavItem active={true}><rs.NavLink href="#">Home</rs.NavLink></rs.NavItem>
-                <rs.NavItem><rs.NavLink href="#">Schedule</rs.NavLink></rs.NavItem>
-                <rs.NavItem><rs.NavLink href="#">Worker</rs.NavLink></rs.NavItem>
-                <rs.NavItem><rs.NavLink href="#">Member</rs.NavLink></rs.NavItem>
-                <rs.NavItem><rs.NavLink href="#">Log</rs.NavLink></rs.NavItem>
-              </rs.Nav>
+              <Nav className="mr-auto" navbar={true}>
+                <NavItem active={true}><NavLink href="/">Home</NavLink></NavItem>
+                <NavItem><NavLink href="/schedule" >Schedule</NavLink></NavItem>
+                <NavItem><NavLink href="/worker">Worker</NavLink></NavItem>
+                <NavItem><NavLink href="/member">Member</NavLink></NavItem>
+                <NavItem><NavLink href="/log">Log</NavLink></NavItem>
+              </Nav>
             </div>
-          </rs.Navbar>
+          </Navbar>
         </header>
       </div>
     );

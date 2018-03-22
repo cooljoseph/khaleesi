@@ -9,8 +9,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'mdbootstrap/css/mdb.min.css';
-import App from './app';
+import {App} from './app';
+import {AppRouter} from './router';
 
 const ROOT = document.querySelector('#main');
 
-ReactDOM.render(<App/>, ROOT);
+ReactDOM.render(<AppRouter/>, ROOT);
