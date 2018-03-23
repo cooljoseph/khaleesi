@@ -6,7 +6,8 @@ module.exports={
 	entry: './src/main/ts/index.tsx',
 	output: {
 		path: path.resolve(__dirname, '/src/main/resources/static'),
-		filename: 'bundle.js'
+		filename: 'bundle.js',
+		publicPath: '/'
 	},
 	resolve: {
 		extensions: ['.js', '.ts', '.tsx']
@@ -43,11 +44,10 @@ module.exports={
 	devServer:{
 		historyApiFallback: true,
 		compress: true,
-		publicPath: '/',
 		host: "0.0.0.0",
 		port: 3000,
 		proxy: {
-			"**": "http://localhost:8000"
+			"/api/**": "http://localhost:8000"
 		}
 	},
 	plugins: [

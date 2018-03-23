@@ -7,6 +7,7 @@
 
 import * as React from 'react';
 import {Navbar, NavbarBrand, NavbarToggler, Nav, NavItem, NavLink} from 'reactstrap';
+import {Link} from 'react-router-dom';
 
 export class App extends React.Component<{}>{
   render(){
@@ -20,11 +21,12 @@ export class App extends React.Component<{}>{
             </NavbarToggler>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <Nav className="mr-auto" navbar={true}>
-                <NavItem active={true}><NavLink href="/">Home</NavLink></NavItem>
-                <NavItem><NavLink href="/schedule" >Schedule</NavLink></NavItem>
-                <NavItem><NavLink href="/worker">Worker</NavLink></NavItem>
-                <NavItem><NavLink href="/member">Member</NavLink></NavItem>
-                <NavItem><NavLink href="/log">Log</NavLink></NavItem>
+                {/* 얘네가 이걸 고쳐 줄 생각이 없네 NavLink 대체 */}
+                <NavItem><Link to={"/"} className = "nav-link">Home</Link></NavItem>
+                <NavItem><Link to={"/schedule"} className = "nav-link">Schedule</Link></NavItem>
+                <NavItem><Link to={"/worker"} className="nav-link">Worker</Link></NavItem>
+                <NavItem><Link to={"/member"} className="nav-link">Member</Link></NavItem>
+                <NavItem><Link to={"/log"} className="nav-link">Log</Link></NavItem>
               </Nav>
             </div>
           </Navbar>

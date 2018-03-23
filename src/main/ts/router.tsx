@@ -6,22 +6,26 @@
  */
 
 import * as React from 'react';
-import {App} from './app';
-import {Schedule} from './components/schedule';
-import {Worker} from './components/worker';
-import {Member} from './components/member';
-import {Log} from './components/log';
-import {BrowserRouter, Route} from "react-router-dom";
+import Dashboard from './components/dashboard';
+import Schedule from './components/schedule';
+import Worker from './components/worker';
+import Member from './components/member';
+import Log from './components/log';
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {App} from "./app";
 
 export const AppRouter: React.StatelessComponent<{}> = () => {
   return(
     <BrowserRouter>
       <div>
-        <Route path="/" component={App} />
-        <Route path="/schedule" component={Schedule} />
-        <Route path="/worker" component={Worker} />
-        <Route path="/member" component={Member} />
-        <Route path="/Log" component={Log} />
+        <App/>
+        <Switch>
+          <Route exact={true} path="/" component={Dashboard} />
+          <Route exact={true} path="/schedule" component={Schedule} />
+          <Route exact={true} path="/worker" component={Worker} />
+          <Route exact={true} path="/member" component={Member} />
+          <Route exact={true} path="/log" component={Log} />
+        </Switch>
       </div>
     </BrowserRouter>
   );
