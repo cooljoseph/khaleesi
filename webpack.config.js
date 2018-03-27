@@ -1,6 +1,5 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-var webpack = require("webpack");
 
 module.exports={
 	entry: './src/main/ts/index.tsx',
@@ -8,6 +7,19 @@ module.exports={
 		path: path.resolve(__dirname, '/src/main/resources/static'),
 		filename: 'bundle.js',
 		publicPath: '/'
+	},
+	// 외부 라이브러리는 다 따로 뺄라고 이렇게 한건데 제대로 되는 거 맞나 의심 스러움...
+	optimization:{
+		splitChunks: {
+			cacheGroups: {
+				vendor: {
+					test: path.resolve(__dirname, "node_modules"),
+					chunks: 'initial',
+					name: 'vendor',
+					enforce: true
+				}
+			}
+		}
 	},
 	resolve: {
 		extensions: ['.js', '.ts', '.tsx']

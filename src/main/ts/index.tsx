@@ -7,10 +7,10 @@
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'mdbootstrap/css/mdb.min.css';
 import {AppRouter} from './router';
+
+import './assets/app.css';
 
 const ROOT = document.querySelector('#main');
 
-ReactDOM.render(<AppRouter/>, ROOT);
+ReactDOM.render(<AppRouter />, ROOT);
