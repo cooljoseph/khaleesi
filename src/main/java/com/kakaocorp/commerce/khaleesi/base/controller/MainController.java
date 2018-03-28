@@ -65,12 +65,4 @@ public class MainController {
         mm.addAttribute("msg", "WELCOME");
         return "main";
     }
-
-    @RequestMapping("/dummy")
-    @ResponseBody
-    public DeferredResult<ResponseEntity<String>> dummy(){
-        DeferredResult<ResponseEntity<String>> deferredResult = new DeferredResult<>();
-        dummyService.dummy().whenCompleteAsync((result, throwable) -> deferredResult.setResult(ResponseEntity.ok(result)));
-        return deferredResult;
-    }
 }

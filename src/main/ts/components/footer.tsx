@@ -8,13 +8,19 @@
 import * as React from "react";
 import {Layout, Icon} from 'antd';
 
-export class Footer extends React.Component<{}>{
-  render(){
-    return (
-      <Layout.Footer style={{textAlign: 'center'}}>
-        <p>Ant Design ©2016 Created by Ant UED</p>
-        <p>Developed by <a href="https://github.com/cooljoseph" target="_blank">joseph yoon <Icon type="github"/></a></p>
-      </Layout.Footer>
-    );
-  }
+interface FooterProps{
+  align: String
 }
+
+export const Footer: React.StatelessComponent<FooterProps> = (props) => {
+  return (
+    <Layout.Footer style={{textAlign: props.align}}>
+      <p>Ant Design ©2016 Created by Ant UED</p>
+      <p>Developed by <a href="https://github.com/cooljoseph" target="_blank">joseph yoon <Icon type="github"/></a></p>
+    </Layout.Footer>
+  );
+};
+
+Footer.defaultProps = {
+  align: 'center'
+};

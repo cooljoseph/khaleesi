@@ -6,16 +6,9 @@
  */
 
 import * as React from 'react';
-import Dashboard from './components/dashboard';
-import Schedule from './components/schedule';
-import Worker from './components/worker';
-import Member from './components/member';
-import Log from './components/log';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import {Footer} from "./components/footer";
-import {Header} from "./components/header";
-import {Sidebar} from "./components/sidebar";
 import {Layout} from 'antd';
+import {Sidebar, Header, Footer, Dashboard, Schedule, Worker, Member, Log} from './components';
 
 export const AppRouter: React.StatelessComponent<{}> = () => {
   return(
@@ -33,7 +26,7 @@ export const AppRouter: React.StatelessComponent<{}> = () => {
               <Route exact={true} path="/log" component={Log} />
             </Switch>
           </div>
-          <Footer/>
+          <Footer align = 'center'/>
         </Layout.Content>
       </Layout>
     </BrowserRouter>
