@@ -25,6 +25,9 @@ import java.util.Map;
 
 @Component
 @Slf4j
+/**
+ * TODO Factory면 Factory 답게 WorkerProcess 를 찍어내자
+ * */
 public class WorkerBeanFactory implements ApplicationContextAware, InitializingBean {
     private ApplicationContext applicationContext;
     @Value("${server.mode:all}")
@@ -34,9 +37,9 @@ public class WorkerBeanFactory implements ApplicationContextAware, InitializingB
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        if(false == (serverMode.equalsIgnoreCase(ServerMode.all.name())
-                    || serverMode.equalsIgnoreCase(ServerMode.master.name())
-                    || serverMode.equalsIgnoreCase(ServerMode.worker.name()))){
+        if(!(serverMode.equalsIgnoreCase(ServerMode.all.name())
+                || serverMode.equalsIgnoreCase(ServerMode.master.name())
+                || serverMode.equalsIgnoreCase(ServerMode.worker.name()))){
             throw new IllegalArgumentException("server.mode only accept \"master\", \"worker\", \"all\"");
         }
 

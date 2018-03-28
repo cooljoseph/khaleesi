@@ -24,6 +24,7 @@ ext{
     javaVersion = '1.8'
     queryDslVersion = '4.1.4'
     queryDslOutput = file("src-gen/main/java")
+    embeddedRedisVersion = '0.6'
 }
 
 repositories {
@@ -48,6 +49,7 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-actuator'
     compile 'org.springframework.boot:spring-boot-devtools'
     compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile 'org.springframework.boot:spring-boot-starter-data-redis'
 
     compile 'com.google.guava:guava:23.6-jre'
     compile 'org.apache.commons:commons-lang3:3.7'
@@ -56,6 +58,8 @@ dependencies {
     compile "com.querydsl:querydsl-core:${queryDslVersion}"
     compile "com.querydsl:querydsl-apt:${queryDslVersion}"
     compile "com.querydsl:querydsl-jpa:${queryDslVersion}"
+
+    compile "com.github.kstyrc:embedded-redis:${embeddedRedisVersion}"
 
     compile 'mysql:mysql-connector-java:5.1.45'
     compile 'com.zaxxer:HikariCP:2.7.6'
