@@ -9,6 +9,7 @@ package com.kakaocorp.commerce.khaleesi.base.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -18,5 +19,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
         basePackages = {"com.kakaocorp.commerce.khaleesi.base.repository"},
         basePackageClasses = {Jsr310JpaConverters.class}
 )
+@EnableJpaAuditing
 public class JpaConfig {
 }

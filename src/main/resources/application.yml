@@ -13,18 +13,14 @@ spring:
     host: localhost
     port: 6379
 
-  # 어차피 재사용 될 거니깐 무의미
   datasource:
     url: jdbc:mysql://localhost:3306/khaleesi?useSSL=false
     username: root
     driver-class-name: com.mysql.jdbc.Driver
     hikari:
       auto-commit: false
-      # 60 초
       connection-timeout: 60000
       maximum-pool-size: 10
 
   flyway:
     locations: classpath:db/migration/{vendor}
-    # test 용도 나중에는 지워야 함
-    clean-on-validation-error: true

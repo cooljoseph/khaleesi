@@ -11,6 +11,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -20,10 +21,11 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Entity
+@EntityListeners(value = {AuditingEntityListener.class})
 public class Schedule implements Serializable{
     private static final long serialVersionUID = -8212326866057196212L;
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "code", length = 100, nullable = false)
     private String code;
@@ -78,8 +80,8 @@ public class Schedule implements Serializable{
     @Column(name="second", length = 100, nullable = false)
     private String second;   // 초 단위
 
-    @ManyToMany
-    private List<Worker> workerList;
+//    @ManyToMany
+//    private List<Worker> workerList;
 
     @CreatedDate
     @Column(name = "created_at", updatable = false)
