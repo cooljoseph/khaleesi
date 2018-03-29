@@ -13,7 +13,7 @@ export default class Sidebar extends React.Component<{}>{
   render(){
     return (
       <Layout.Sider trigger={null} collapsible>
-        <div className="logo" />
+        <div className="logo"><span className="logo-kh"><b>Khaleesi</b>Batch</span></div>
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
           <Menu.Item key="1">
             <Link to="/" className="nav-text"><Icon type="pie-chart" /> Dashboard</Link>
