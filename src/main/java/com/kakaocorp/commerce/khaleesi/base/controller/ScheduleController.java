@@ -7,11 +7,13 @@
 
 package com.kakaocorp.commerce.khaleesi.base.controller;
 
+import com.kakaocorp.commerce.khaleesi.base.cond.schedule.ScheduleCond;
 import com.kakaocorp.commerce.khaleesi.base.entity.schedule.Schedule;
 import com.kakaocorp.commerce.khaleesi.base.service.ScheduleService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -50,6 +52,11 @@ public class ScheduleController {
             log.error(ExceptionUtils.getStackTrace(e));
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<Page<Schedule>> list(ScheduleCond cond){
+        return ResponseEntity.ok(scheduleService.list(cond));
     }
 
     @DeleteMapping("/{id}")

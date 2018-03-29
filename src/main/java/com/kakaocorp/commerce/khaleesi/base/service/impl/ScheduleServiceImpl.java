@@ -7,10 +7,13 @@
 
 package com.kakaocorp.commerce.khaleesi.base.service.impl;
 
+import com.kakaocorp.commerce.khaleesi.base.cond.schedule.ScheduleCond;
 import com.kakaocorp.commerce.khaleesi.base.entity.schedule.Schedule;
 import com.kakaocorp.commerce.khaleesi.base.repository.ScheduleRepository;
 import com.kakaocorp.commerce.khaleesi.base.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -32,5 +35,10 @@ public class ScheduleServiceImpl implements ScheduleService{
     @Override
     public void deleteById(Long id) {
         scheduleRepository.deleteById(id);
+    }
+
+    @Override
+    public Page<Schedule> list(ScheduleCond cond) {
+        return scheduleRepository.search(cond, Pageable.unpaged());
     }
 }
