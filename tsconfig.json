@@ -4,7 +4,7 @@
     "jsx": "react",
     "module": "commonjs",
     "noImplicitAny": true,
-    "outDir": "./src/main/resources/static/",
+    "outDir": "./out",
     "preserveConstEnums": true,
     "removeComments": true,
     "sourceMap": true,

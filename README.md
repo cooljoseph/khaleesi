@@ -1,13 +1,5 @@
 # khaleesi
 
-## Configuration
-
-```bash
- # DB Migration
- 
- $ gradle flywayMigrate -i // 아직 완전히 구현 안되어 있음 
-```
-
 ## Run
 
 ```bash
