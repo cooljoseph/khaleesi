@@ -8,7 +8,7 @@
 import * as React from "react";
 import {Layout, Icon} from "antd";
 
-export default class Header extends React.Component<{}>{
+export class Header extends React.Component<{}>{
   render(){
     return (
       <Layout>

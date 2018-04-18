@@ -8,19 +8,6 @@ module.exports={
 		filename: 'bundle.js',
 		publicPath: '/'
 	},
-	// 외부 라이브러리는 다 따로 뺄라고 이렇게 한건데 제대로 되는 거 맞나 의심 스러움...
-	optimization:{
-		splitChunks: {
-			cacheGroups: {
-				vendor: {
-					test: path.resolve(__dirname, "node_modules"),
-					chunks: 'initial',
-					name: 'vendor',
-					enforce: true
-				}
-			}
-		}
-	},
 	resolve: {
 		extensions: ['.js', '.ts', '.tsx']
 	},
