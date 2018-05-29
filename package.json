@@ -4,7 +4,7 @@
   "description": "khaleesi-web",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "webpack-dev-server"
+    "dev": "webpack-dev-server --mode development --config webpack.dev.config.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/cooljoseph/khaleesi#readme",
   "dependencies": {
-    "antd": "^3.3.3",
+    "admin-lte": "https://github.com/almasaeed2010/AdminLTE#v3-dev",
+    "bootstrap": "^4.1.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
     "react": "^16.2.0",
@@ -27,10 +28,10 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
-    "reactstrap": "^5.0.0-beta.3"
+    "reactstrap": "^5.0.0",
+    "redux-actions": "^2.4.0"
   },
   "devDependencies": {
-    "@types/antd": "^1.0.0",
     "@types/jquery": "^3.3.1",
     "@types/react": "^16.0.40",
     "@types/react-dom": "^16.0.4",
@@ -39,6 +40,7 @@
     "@types/react-router": "^4.0.23",
     "@types/react-router-dom": "^4.2.5",
     "@types/react-router-redux": "^5.0.13",
+    "@types/reactstrap": "^5.0.25",
     "css-loader": "^0.28.11",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.0.7",

@@ -10,6 +10,8 @@ import * as ReactDOM from 'react-dom';
 import {App} from './app';
 
 import './assets/app.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'admin-lte/dist/css/adminlte.min.css';
 
 const ROOT = document.querySelector('#main');
 

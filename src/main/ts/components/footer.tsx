@@ -6,21 +6,15 @@
  */
 
 import * as React from "react";
-import {Layout, Icon} from 'antd';
+import * as FontAwesome from "react-fontawesome";
 
-interface FooterProps{
-  align: String
-}
-
-export const Footer: React.StatelessComponent<FooterProps> = (props) => {
+export const Footer: React.SFC = () => {
   return (
-    <Layout.Footer style={{textAlign: props.align}}>
-      <p>Ant Design ©2016 Created by Ant UED</p>
-      <p>Developed by <a href="https://github.com/cooljoseph" target="_blank">joseph yoon <Icon type="github"/></a></p>
-    </Layout.Footer>
+    <footer className="main-footer">
+      <strong>powered by Khaleesi</strong>
+      <a href="https://github.com/cooljoseph/khaleesi" target="_blank">
+        <FontAwesome name="github" size="2x" />
+      </a>
+    </footer>
   );
-};
-
-Footer.defaultProps = {
-  align: 'center'
 };
