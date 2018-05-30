@@ -7,9 +7,9 @@
 
 import * as React from 'react';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import {Dashboard, Schedule, Worker, Member, Log, Footer, Header, Sidebar} from './components';
+import {Dashboard, Schedule, Worker, Member, Log, Footer, Header, Sidebar, NotFound} from './components';
 
-export const AppRouter: React.StatelessComponent<{}> = () => {
+const AppRouter: React.SFC = () => {
   return(
     <BrowserRouter>
       <div className="wrapper">
@@ -18,10 +18,11 @@ export const AppRouter: React.StatelessComponent<{}> = () => {
         <div className="content-wrapper">
           <Switch>
             <Route exact={true} path="/" component={Dashboard} />
-            <Route exact={true} path="/schedule" component={Schedule} />
-            <Route exact={true} path="/worker" component={Worker} />
-            <Route exact={true} path="/member" component={Member} />
-            <Route exact={true} path="/log" component={Log} />
+            <Route path="/schedule" component={Schedule} />
+            <Route path="/worker" component={Worker} />
+            <Route path="/member" component={Member} />
+            <Route path="/log" component={Log} />
+            <Route exact={true} path="*" component={NotFound} />
           </Switch>
         </div>
         <Footer/>
@@ -29,3 +30,5 @@ export const AppRouter: React.StatelessComponent<{}> = () => {
     </BrowserRouter>
   );
 };
+
+export default AppRouter;

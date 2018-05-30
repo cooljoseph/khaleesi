@@ -9,14 +9,19 @@ import * as React from "react";
 import { Nav, Navbar, NavItem } from "reactstrap";
 import * as FontAwesome from "react-fontawesome";
 import {NavLink} from "react-router-dom";
+import * as $ from 'jquery';
 
 export class Header extends React.Component<{}>{
+  toggleSidebar():void {
+    $("body").toggleClass("sidebar-collapse");
+  }
+
   render(){
     return (
       <Navbar className="main-header border-bottom bg-white" light expand>
         <Nav className="navbar-nav">
           <NavItem>
-            <NavLink to="/" className="nav-link"><FontAwesome name="bars" /></NavLink>
+            <a onClick={this.toggleSidebar} className="nav-link"><FontAwesome name="bars" /></a>
           </NavItem>
         </Nav>
         <Nav className="navbar-nav ml-auto">

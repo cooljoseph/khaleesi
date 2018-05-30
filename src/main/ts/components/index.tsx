@@ -13,3 +13,4 @@ export {Log} from './log';
 export {Footer} from "./footer";
 export {Header} from "./header";
 export {Sidebar} from "./sidebar";
+export {NotFound} from "./notfound";

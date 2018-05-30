@@ -6,9 +6,8 @@
  */
 
 import * as React from "react";
-import { Nav, NavItem } from "reactstrap";
-import {NavLink} from "react-router-dom";
-import * as FontAwesome from "react-fontawesome";
+import { Nav } from "reactstrap";
+import SidebarItem from "./sidebarItem";
 
 export class Sidebar extends React.Component<{}>{
   render(){
@@ -20,36 +19,11 @@ export class Sidebar extends React.Component<{}>{
         <div className="sidebar">
           <nav className="mt-2">
             <Nav className="nav-pills nav-sidebar flex-column">
-              <NavItem>
-                <NavLink exact to="/" className="nav-link" >
-                  <FontAwesome name="dashboard" className="nav-icon"/>
-                  <p>Dashboard</p>
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to="/schedule" className="nav-link" >
-                  <FontAwesome name="calendar" className="nav-icon"/>
-                  <p>Schedule</p>
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to="/worker" className="nav-link" >
-                  <FontAwesome name="cogs" className="nav-icon"/>
-                  <p>Worker</p>
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to="/log" className="nav-link" >
-                  <FontAwesome name="calendar" className="nav-icon"/>
-                  <p>Log</p>
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to="/member" className="nav-link" >
-                  <FontAwesome name="user" className="nav-icon"/>
-                  <p>Member</p>
-                </NavLink>
-              </NavItem>
+              <SidebarItem link="/" iconName="dashboard" menuName="Dashboard" exact={true}/>
+              <SidebarItem link="/schedule" iconName="calendar" menuName="Schedule" exact={false}/>
+              <SidebarItem link="/worker" iconName="cogs" menuName="Worker" exact={false}/>
+              <SidebarItem link="/log" iconName="calendar" menuName="Log" exact={false}/>
+              <SidebarItem link="/member" iconName="user" menuName="Member" exact={false}/>
             </Nav>
           </nav>
         </div>
