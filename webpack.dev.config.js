@@ -39,7 +39,6 @@ module.exports={
 		  }]
 	},
 	devtool: "source-map",
-	// TODO 나중에 prod, dev 설정할 때 띄어 버리자.
 	devServer:{
 		historyApiFallback: true,
 		compress: true,

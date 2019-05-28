@@ -93,3 +93,5 @@ src/main/resources/static/index.js
 src/main/resources/static/index.js.map
 
 .vscode
+bin/
+.settings/
